@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt
-from MainMenu import Ui_TubeIt  # Import the class representing your main UI
+from MainMenu import Ui_TubeIT  # Import the class representing your main UI
 from SettingsMenu import Ui_Settings  # Import the class representing the settings Settings UI
 
 import json
@@ -15,10 +15,10 @@ class SettingsSettings(QDialog, Ui_Settings):
 
 
 
-class MyTubeIt(QMainWindow):
+class MyTubeIT(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_TubeIt()
+        self.ui = Ui_TubeIT()
         self.ui.setupUi(self)
         self.setWindowIcon(QIcon("icon.ico"))
 
@@ -48,7 +48,7 @@ class MyTubeIt(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    main_window = MyTubeIt()
+    main_window = MyTubeIT()
     main_window.show()
     sys.exit(app.exec())
 

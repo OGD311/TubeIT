@@ -13,9 +13,10 @@ import random
 import json
 import AudioIn as AI
 
-class Ui_TubeIt(object):
+class Ui_TubeIT(object):
     
     def __init__(self) -> None:
+        self.TubeIT = None
         self.startedMic = False
         self.PNGView = None
         self.curAudioLevel = 0
@@ -25,11 +26,12 @@ class Ui_TubeIt(object):
         self.updateVals(first=True)
 
 
-    def setupUi(self, TubeIt):
-        TubeIt.setObjectName("TubeIt")
-        TubeIt.setFixedSize(800, 600)
-        
-        self.centralwidget = QtWidgets.QWidget(TubeIt)
+    def setupUi(self, TubeIT):
+        TubeIT.setObjectName("TubeIT")
+        TubeIT.setFixedSize(800, 600)
+        self.TubeIT = TubeIT
+
+        self.centralwidget = QtWidgets.QWidget(TubeIT)
         self.centralwidget.setObjectName("centralwidget")
 
         self.MainLabel = QLabel(parent=self.centralwidget)
@@ -91,39 +93,39 @@ class Ui_TubeIt(object):
         self.Copyright.setObjectName("Copyright")
         self.Copyright.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        TubeIt.setCentralWidget(self.centralwidget)
+        TubeIT.setCentralWidget(self.centralwidget)
 
         # Menu
-        self.menubar = QtWidgets.QMenuBar(TubeIt)
+        self.menubar = QtWidgets.QMenuBar(TubeIT)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
         self.menubar.setObjectName("menubar")
-        self.menubar.setParent(TubeIt)
+        self.menubar.setParent(TubeIT)
 
         self.menuOptions = QtWidgets.QMenu(self.menubar)
         self.menuOptions.setObjectName("menuOptions")
-        TubeIt.setMenuBar(self.menubar)
+        TubeIT.setMenuBar(self.menubar)
 
-        self.statusbar = QtWidgets.QStatusBar(TubeIt)
+        self.statusbar = QtWidgets.QStatusBar(TubeIT)
         self.statusbar.setObjectName("statusbar")
-        TubeIt.setStatusBar(self.statusbar)
+        TubeIT.setStatusBar(self.statusbar)
 
-        # self.actionImport = QtGui.QAction(TubeIt)
+        # self.actionImport = QtGui.QAction(TubeIT)
         # self.actionImport.setObjectName("actionImport")
         # self.actionImport.setShortcutVisibleInContextMenu(False)
         # self.menuOptions.addAction(self.actionImport)
 
-        # self.actionExport = QtGui.QAction(TubeIt)
+        # self.actionExport = QtGui.QAction(TubeIT)
         # self.actionExport.setObjectName("actionExport")
         # self.actionExport.setShortcutVisibleInContextMenu(False)
         # self.menuOptions.addAction(self.actionExport)
 
-        self.actionSettings = QtGui.QAction(TubeIt)
+        self.actionSettings = QtGui.QAction(TubeIT)
         self.actionSettings.setObjectName("actionSettings")
         self.actionSettings.setShortcutVisibleInContextMenu(True)
         self.menuOptions.addAction(self.actionSettings)
 
         # Create toggleable action for Fullscreen
-        self.actionFullscreen = QtGui.QAction(TubeIt)
+        self.actionFullscreen = QtGui.QAction(TubeIT)
         self.actionFullscreen.setCheckable(True)
         self.actionFullscreen.setObjectName("actionFullscreen")
         self.actionFullscreen.triggered.connect(self.toggle_fullscreen)
@@ -131,28 +133,28 @@ class Ui_TubeIt(object):
 
         self.menubar.addAction(self.menuOptions.menuAction())
 
-        self.retranslateUi(TubeIt)
-        QtCore.QMetaObject.connectSlotsByName(TubeIt)
+        self.retranslateUi(TubeIT)
+        QtCore.QMetaObject.connectSlotsByName(TubeIT)
 
         self.updateVals()
 
 
-    def retranslateUi(self, TubeIt):
+    def retranslateUi(self, TubeIT):
         _translate = QtCore.QCoreApplication.translate
-        TubeIt.setWindowTitle(_translate("TubeIt", "TubeIt"))
-        self.MainLabel.setText(_translate("MainWindow", "TubeIt"))
-        self.Shake.setText(_translate("TubeIt", "Shake?"))
-        self.Image1.setText(_translate("TubeIt", "Select Still Image"))
-        self.Image2.setText(_translate("TubeIt", "Select Talking Image"))
-        self.File1.setText(_translate("TubeIt", "None"))
-        self.File2.setText(_translate("TubeIt", "None"))
-        self.inputLevelLabel.setText(_translate("TubeIt", "Input Level: "))
-        self.Copyright.setText(_translate("TubeIt", "Copyright (c) 2024 ogd311. All rights reserved."))
-        self.menuOptions.setTitle(_translate("TubeIt", "Options"))
-        # self.actionImport.setText(_translate("TubeIt", "Import"))
-        # self.actionExport.setText(_translate("TubeIt", "Export"))
-        self.actionSettings.setText(_translate("TubeIt", "Settings"))
-        self.actionFullscreen.setText(_translate("TubeIt", "Fullscreen"))
+        TubeIT.setWindowTitle(_translate("TubeIT", "TubeIT"))
+        self.MainLabel.setText(_translate("MainWindow", "TubeIT"))
+        self.Shake.setText(_translate("TubeIT", "Shake?"))
+        self.Image1.setText(_translate("TubeIT", "Select Still Image"))
+        self.Image2.setText(_translate("TubeIT", "Select Talking Image"))
+        self.File1.setText(_translate("TubeIT", "None"))
+        self.File2.setText(_translate("TubeIT", "None"))
+        self.inputLevelLabel.setText(_translate("TubeIT", "Input Level: "))
+        self.Copyright.setText(_translate("TubeIT", "Copyright (c) 2024 ogd311. All rights reserved."))
+        self.menuOptions.setTitle(_translate("TubeIT", "Options"))
+        # self.actionImport.setText(_translate("TubeIT", "Import"))
+        # self.actionExport.setText(_translate("TubeIT", "Export"))
+        self.actionSettings.setText(_translate("TubeIT", "Settings"))
+        self.actionFullscreen.setText(_translate("TubeIT", "Fullscreen"))
 
 
 
@@ -188,6 +190,8 @@ class Ui_TubeIt(object):
             self.microphone.stop()
             self.startedMic = False
             self.curAudioLevel = 0
+        
+        self.inputLevelLabel.setText("Input Level: ")
 
     def update_Audio_Level(self):
         self.curAudioLevel = self.microphone.curVal()
@@ -279,7 +283,7 @@ class Ui_TubeIt(object):
     def toggle_fullscreen(self):
         if self.actionFullscreen.isChecked():
             print("Fullscreen activated")
-            # Hide all UI elements
+            # Hide all UI elements including menubar
             self.MainLabel.hide()
             self.Shake.hide()
             self.Start.hide()
@@ -289,15 +293,18 @@ class Ui_TubeIt(object):
             self.File2.hide()
             self.inputLevelLabel.hide()
             self.Copyright.hide()
-            self.menuOptions.hide()
+            self.menubar.hide()
             self.statusbar.hide()
             # Resize PNGView to fill the entire central widget
-            self.PNGView.setGeometry(self.centralwidget.geometry())  
+            self.PNGView.setGeometry(self.TubeIT.geometry())  
             self.PNGView.move(0,0)
+            
+            
+
 
         else:
             print("Fullscreen deactivated")
-            # Show all UI elements
+            # Show all UI elements including menubar
             self.MainLabel.show()
             self.Shake.show()
             self.Start.show()
@@ -307,10 +314,11 @@ class Ui_TubeIt(object):
             self.File2.show()
             self.inputLevelLabel.show()
             self.Copyright.show()
-            self.menuOptions.show()
+            self.menubar.show()
             self.statusbar.show()
             # Restore original size and position of PNGView
-            self.PNGView.setGeometry(QtCore.QRect(10, 20, 551, 511))  
+            self.PNGView.setGeometry(QtCore.QRect(10, 20, 551, 511))
+
             
 
     def getSettings(self):
@@ -325,9 +333,6 @@ class Ui_TubeIt(object):
     def updateVals(self, first=False):
         micLevel, shakeMultiplyer, backgroundColor, audioDevice, image1, image2 = self.getSettings()
         AI.setAudioDevice(audioDevice)
-        
-        if self.startedMic:  # Stop existing microphone instance if running
-            self.stop_microphone()
 
         self.micLevel = micLevel
         self.shakeMultiplyer = shakeMultiplyer
