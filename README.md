@@ -5,6 +5,7 @@ Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times les
 
 ![image](https://github.com/OGD311/TubeIT/assets/114223604/ae440de6-e344-4c28-83e7-c4b586a3e7a2)
 ![image](https://github.com/OGD311/TubeIT/assets/114223604/10949a20-4561-4fa8-b042-2a9bdfbe416d)
+![image](https://github.com/OGD311/TubeIT/assets/114223604/523c0ab2-12b9-40a8-9526-f9ab23a0aab7)
 > This is not my PNGTuber, it is simply one I downloaded for testing. Message me to remove it if it is your intellectual property
 
 ## Features
@@ -21,7 +22,7 @@ Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times les
 - Select your two pngs - one for when not talking, and one for when talking
 - Click start
 - Toggle fullscreen mode from the options tab
-- Use in programs such as OBS or Streamlabs
+- Use in programs such as OBS or Streamlabs (Select Window Capture)
 
 ## Future Features
 - Shake levels varying based on mic input levels
@@ -29,3 +30,4 @@ Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times les
 ## Known Issues
 - If the user has Asseto Corsa installed they will get a warning about 'TubeIT.pdb' - Clicking yes will open the TubeIT (and not open AC)
 - When starting with saved avatars, they will load as small images; this can be fixed by clicking 'Start'
+- Program softlocks if user attempts to start without loading any images
