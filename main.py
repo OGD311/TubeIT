@@ -1,6 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import Qt
 from MainMenu import Ui_TubeIt  # Import the class representing your main UI
 from SettingsMenu import Ui_Settings  # Import the class representing the settings Settings UI
 
@@ -24,12 +25,25 @@ class MyTubeIt(QMainWindow):
         
         # Connect the menu action to the method
         self.ui.actionSettings.triggered.connect(self.open_settings)
+    
+    ## Keybinds
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_F:
+            print('Toggle')
+            self.ui.actionFullscreen.setChecked(not self.ui.actionFullscreen.isChecked())
+            self.ui.toggle_fullscreen()
+
+        if event.key() == Qt.Key.Key_S:
+            print('Shake')
+            self.ui.Shake.setChecked(not self.ui.Shake.isChecked())
+
 
     def open_settings(self):
         # Create an instance of the settings Settings and display it
         settings_Settings = SettingsSettings()
         settings_Settings.exec()
         self.ui.updateVals()
+        self.ui.start_microphone()
 
 def main():
     app = QApplication(sys.argv)
@@ -42,7 +56,9 @@ try:
         "micLevel": 500,
         "shakeMultiplyer": 1.0,
         "backgroundColor": '#04F404',
-        "audioDevice" : 0
+        "audioDevice" : 0,
+        "stillImage" : "",
+        "talkingImage" : ""
     }
 
     with open('settings.json', 'x') as settings:

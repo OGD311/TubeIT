@@ -152,11 +152,18 @@ class Ui_Settings(object):
         color = self.colorSquare.palette().color(self.colorSquare.backgroundRole())
         hex_color = "#{:02x}{:02x}{:02x}".format(color.red(), color.green(), color.blue())
 
+        with open('settings.json', 'r') as settings:
+            data = json.load(settings)
+            stillImage = data['stillImage']
+            talkingImage = data['talkingImage']
+
         values = {
             "micLevel": self.MicLevelSpin.value(),
             "shakeMultiplyer": self.ShakeMultiplyer.value(),
             "backgroundColor": hex_color,
-            "audioDevice" : self.InputChoice.currentIndex()
+            "audioDevice" : self.InputChoice.currentIndex(),
+            "stillImage" : stillImage,
+            "talkingImage" : talkingImage
         }
 
         with open('settings.json', 'w') as settings:

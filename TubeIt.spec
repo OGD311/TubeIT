@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['main.py', 'MainMenu.py', 'SettingsMenu.py', 'AudioIn.py', 'icon.ico'],
+    ['main.py', 'MainMenu.py', 'SettingsMenu.py', 'AudioIn.py'],
     pathex=[],
     binaries=[],
     datas=[],

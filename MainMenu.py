@@ -16,13 +16,13 @@ import AudioIn as AI
 class Ui_TubeIt(object):
     
     def __init__(self) -> None:
-        self.image1 = 'img1.png'
-        self.image2 = 'img2.png'
         self.startedMic = False
         self.PNGView = None
         self.curAudioLevel = 0
         self.refreshRate = 20
-        self.updateVals()
+        self.image1 = None
+        self.image2 = None
+        self.updateVals(first=True)
 
 
     def setupUi(self, TubeIt):
@@ -63,12 +63,12 @@ class Ui_TubeIt(object):
         self.Image1 = QtWidgets.QToolButton(self.centralwidget)
         self.Image1.setGeometry(QtCore.QRect(610, 180, 131, 22))
         self.Image1.setObjectName("Image1")
-        self.Image1.clicked.connect(self.load_image1)
+        self.Image1.clicked.connect(lambda: self.load_image1(new=True))
 
         self.Image2 = QtWidgets.QToolButton(self.centralwidget)
         self.Image2.setGeometry(QtCore.QRect(610, 270, 131, 22))
         self.Image2.setObjectName("Image2")
-        self.Image2.clicked.connect(self.load_image2)
+        self.Image2.clicked.connect(lambda: self.load_image2(new=True))
 
         self.File1 = QtWidgets.QLabel(self.centralwidget)
         self.File1.setGeometry(QtCore.QRect(580, 210, 200, 16))
@@ -97,6 +97,7 @@ class Ui_TubeIt(object):
         self.menubar = QtWidgets.QMenuBar(TubeIt)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
         self.menubar.setObjectName("menubar")
+        self.menubar.setParent(TubeIt)
 
         self.menuOptions = QtWidgets.QMenu(self.menubar)
         self.menuOptions.setObjectName("menuOptions")
@@ -133,6 +134,8 @@ class Ui_TubeIt(object):
         self.retranslateUi(TubeIt)
         QtCore.QMetaObject.connectSlotsByName(TubeIt)
 
+        self.updateVals()
+
 
     def retranslateUi(self, TubeIt):
         _translate = QtCore.QCoreApplication.translate
@@ -150,6 +153,7 @@ class Ui_TubeIt(object):
         # self.actionExport.setText(_translate("TubeIt", "Export"))
         self.actionSettings.setText(_translate("TubeIt", "Settings"))
         self.actionFullscreen.setText(_translate("TubeIt", "Fullscreen"))
+
 
 
     ## Message code
@@ -244,17 +248,23 @@ class Ui_TubeIt(object):
         self.scene.setSceneRect(QtCore.QRectF(pixmapItem.boundingRect()))
 
 
-    def load_image1(self):
-        self.image1 = self.load_image()
+    def load_image1(self, new=False):
+        if not self.image1 or new == True:
+            self.Image1 = self.load_image()
+
         if self.image1:
             self.File1.setText(self.getName(self.image1))
             self.updateView()
+            self.saveStill()
 
-    def load_image2(self):
-        self.image2 = self.load_image()
+    def load_image2(self, new=False):
+        if not self.image2 or new==True:
+            self.image2 = self.load_image()
+
         if self.image2:
             self.File2.setText(self.getName(self.image2))
             self.updateView()
+            self.saveTalking()
 
     def updateView(self):
         if self.image2 and self.image1:
@@ -309,8 +319,8 @@ class Ui_TubeIt(object):
 
             return array_data
     
-    def updateVals(self):
-        micLevel, shakeMultiplyer, backgroundColor, audioDevice = self.getSettings()
+    def updateVals(self, first=False):
+        micLevel, shakeMultiplyer, backgroundColor, audioDevice, image1, image2 = self.getSettings()
         AI.setAudioDevice(audioDevice)
         
         if self.startedMic:  # Stop existing microphone instance if running
@@ -319,6 +329,47 @@ class Ui_TubeIt(object):
         self.micLevel = micLevel
         self.shakeMultiplyer = shakeMultiplyer
         self.backgroundColor = backgroundColor
+        self.image1, self.image2 = image1, image2
         
         if self.PNGView:
             self.PNGView.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(self.backgroundColor)))
+
+        if image1 and not first:
+            self.load_image1()
+        
+        if image2 and not first:
+            self.load_image2()
+
+
+
+    def saveStill(self):
+        with open('settings.json', 'r') as settings:
+            data = json.load(settings)
+
+        values = {
+            "micLevel": data["micLevel"],
+            "shakeMultiplyer": data["shakeMultiplyer"],
+            "backgroundColor": data["backgroundColor"],
+            "audioDevice" : data["audioDevice"],
+            "stillImage" : self.image1,
+            "talkingImage" : data["talkingImage"],
+        }
+
+        with open('settings.json', 'w') as settings:
+            json.dump(values, settings)
+
+    def saveTalking(self):
+        with open('settings.json', 'r') as settings:
+            data = json.load(settings)
+
+        values = {
+            "micLevel": data["micLevel"],
+            "shakeMultiplyer": data["shakeMultiplyer"],
+            "backgroundColor": data["backgroundColor"],
+            "audioDevice" : data["audioDevice"],
+            "stillImage" : data["stillImage"],
+            "talkingImage" : self.image2
+        }
+
+        with open('settings.json', 'w') as settings:
+            json.dump(values, settings)
