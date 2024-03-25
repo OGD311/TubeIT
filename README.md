@@ -27,3 +27,6 @@ Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times les
 ## Future Features
 - Shake levels varying based on mic input levels
 - Saving avatars
+
+## Known Issues
+- If the user has Asseto Corsa installed they will get a warning about 'TubeIT.pdb' - Clicking yes will open the TubeIT (and not open AC)
