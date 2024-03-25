@@ -85,6 +85,12 @@ class Ui_TubeIt(object):
         self.inputLevelLabel.setObjectName("inputLevelLabel")
         self.inputLevelLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
+
+        self.Copyright = QtWidgets.QLabel(self.centralwidget)
+        self.Copyright.setGeometry(QtCore.QRect(140, 540, 300, 16))
+        self.Copyright.setObjectName("Copyright")
+        self.Copyright.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         TubeIt.setCentralWidget(self.centralwidget)
 
         # Menu
@@ -133,11 +139,12 @@ class Ui_TubeIt(object):
         TubeIt.setWindowTitle(_translate("TubeIt", "TubeIt"))
         self.MainLabel.setText(_translate("MainWindow", "TubeIt"))
         self.Shake.setText(_translate("TubeIt", "Shake?"))
-        self.Image1.setText(_translate("TubeIt", "Select Image 1"))
-        self.Image2.setText(_translate("TubeIt", "Select Image 2"))
+        self.Image1.setText(_translate("TubeIt", "Select Still Image"))
+        self.Image2.setText(_translate("TubeIt", "Select Talking Image"))
         self.File1.setText(_translate("TubeIt", "None"))
         self.File2.setText(_translate("TubeIt", "None"))
         self.inputLevelLabel.setText(_translate("TubeIt", "Input Level: "))
+        self.Copyright.setText(_translate("TubeIt", "Copyright (c) 2024 ogd311. All rights reserved."))
         self.menuOptions.setTitle(_translate("TubeIt", "Options"))
         # self.actionImport.setText(_translate("TubeIt", "Import"))
         # self.actionExport.setText(_translate("TubeIt", "Export"))
@@ -268,6 +275,7 @@ class Ui_TubeIt(object):
             self.File1.hide()
             self.File2.hide()
             self.inputLevelLabel.hide()
+            self.Copyright.hide()
             self.menuOptions.hide()
             self.statusbar.hide()
             # Resize PNGView to fill the entire central widget
@@ -285,6 +293,7 @@ class Ui_TubeIt(object):
             self.File1.show()
             self.File2.show()
             self.inputLevelLabel.show()
+            self.Copyright.show()
             self.menuOptions.show()
             self.statusbar.show()
             # Restore original size and position of PNGView
