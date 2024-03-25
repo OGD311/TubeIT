@@ -3,10 +3,10 @@ Have you ever wanted to become a PNGTuber? Are you running on a lower end comput
 Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times less RAM than other mainstream PNGTubing software.
 > 10 times less RAM from a test of approximately 20 devices running TubeIT and several other PNGTubing software
 
-![image](https://github.com/OGD311/TubeIt/assets/114223604/bcb403bb-f4ca-4017-af87-a7f28a0a1ceb)
-![image](https://github.com/OGD311/TubeIt/assets/114223604/a1497e53-4ba5-4672-b7f5-0d3928ab45d4)
+![image](https://github.com/OGD311/TubeIT/assets/114223604/ae440de6-e344-4c28-83e7-c4b586a3e7a2)
+![image](https://github.com/OGD311/TubeIT/assets/114223604/10949a20-4561-4fa8-b042-2a9bdfbe416d)
 > This is not my PNGTuber, it is simply one I downloaded for testing. Message me to remove it if it is your intellectual property
-> 
+
 ## Features
 - Works on most image types - even though this is designed for PNGs (and we'd recommend that you use them) it does also work for JPEGs and BMPs!
 - Customisable background - is your avatar mostly green, yet when you try to chroma key out the background you find your avatar goes as well? Well TubeIT allows you to customise the background color to your hearts content; meaning you can easily find a color that allows your avatar to be cleanly cut out
