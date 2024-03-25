@@ -13,7 +13,7 @@ import random
 import json
 import AudioIn as AI
 
-class Ui_PNGTuber(object):
+class Ui_TubeIt(object):
     
     def __init__(self) -> None:
         self.image1 = 'img1.png'
@@ -25,11 +25,11 @@ class Ui_PNGTuber(object):
         self.updateVals()
 
 
-    def setupUi(self, PNGTuber):
-        PNGTuber.setObjectName("PNGTuber")
-        PNGTuber.setFixedSize(800, 600)
+    def setupUi(self, TubeIt):
+        TubeIt.setObjectName("TubeIt")
+        TubeIt.setFixedSize(800, 600)
         
-        self.centralwidget = QtWidgets.QWidget(PNGTuber)
+        self.centralwidget = QtWidgets.QWidget(TubeIt)
         self.centralwidget.setObjectName("centralwidget")
 
         self.MainLabel = QLabel(parent=self.centralwidget)
@@ -85,38 +85,38 @@ class Ui_PNGTuber(object):
         self.inputLevelLabel.setObjectName("inputLevelLabel")
         self.inputLevelLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        PNGTuber.setCentralWidget(self.centralwidget)
+        TubeIt.setCentralWidget(self.centralwidget)
 
         # Menu
-        self.menubar = QtWidgets.QMenuBar(PNGTuber)
+        self.menubar = QtWidgets.QMenuBar(TubeIt)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
         self.menubar.setObjectName("menubar")
 
         self.menuOptions = QtWidgets.QMenu(self.menubar)
         self.menuOptions.setObjectName("menuOptions")
-        PNGTuber.setMenuBar(self.menubar)
+        TubeIt.setMenuBar(self.menubar)
 
-        self.statusbar = QtWidgets.QStatusBar(PNGTuber)
+        self.statusbar = QtWidgets.QStatusBar(TubeIt)
         self.statusbar.setObjectName("statusbar")
-        PNGTuber.setStatusBar(self.statusbar)
+        TubeIt.setStatusBar(self.statusbar)
 
-        self.actionImport = QtGui.QAction(PNGTuber)
-        self.actionImport.setObjectName("actionImport")
-        self.actionImport.setShortcutVisibleInContextMenu(True)
-        self.menuOptions.addAction(self.actionImport)
+        # self.actionImport = QtGui.QAction(TubeIt)
+        # self.actionImport.setObjectName("actionImport")
+        # self.actionImport.setShortcutVisibleInContextMenu(False)
+        # self.menuOptions.addAction(self.actionImport)
 
-        self.actionExport = QtGui.QAction(PNGTuber)
-        self.actionExport.setObjectName("actionExport")
-        self.actionExport.setShortcutVisibleInContextMenu(True)
-        self.menuOptions.addAction(self.actionExport)
+        # self.actionExport = QtGui.QAction(TubeIt)
+        # self.actionExport.setObjectName("actionExport")
+        # self.actionExport.setShortcutVisibleInContextMenu(False)
+        # self.menuOptions.addAction(self.actionExport)
 
-        self.actionSettings = QtGui.QAction(PNGTuber)
+        self.actionSettings = QtGui.QAction(TubeIt)
         self.actionSettings.setObjectName("actionSettings")
         self.actionSettings.setShortcutVisibleInContextMenu(True)
         self.menuOptions.addAction(self.actionSettings)
 
         # Create toggleable action for Fullscreen
-        self.actionFullscreen = QtGui.QAction(PNGTuber)
+        self.actionFullscreen = QtGui.QAction(TubeIt)
         self.actionFullscreen.setCheckable(True)
         self.actionFullscreen.setObjectName("actionFullscreen")
         self.actionFullscreen.triggered.connect(self.toggle_fullscreen)
@@ -124,25 +124,25 @@ class Ui_PNGTuber(object):
 
         self.menubar.addAction(self.menuOptions.menuAction())
 
-        self.retranslateUi(PNGTuber)
-        QtCore.QMetaObject.connectSlotsByName(PNGTuber)
+        self.retranslateUi(TubeIt)
+        QtCore.QMetaObject.connectSlotsByName(TubeIt)
 
 
-    def retranslateUi(self, PNGTuber):
+    def retranslateUi(self, TubeIt):
         _translate = QtCore.QCoreApplication.translate
-        PNGTuber.setWindowTitle(_translate("PNGTuber", "PNGTuber"))
+        TubeIt.setWindowTitle(_translate("TubeIt", "TubeIt"))
         self.MainLabel.setText(_translate("MainWindow", "TubeIt"))
-        self.Shake.setText(_translate("PNGTuber", "Shake?"))
-        self.Image1.setText(_translate("PNGTuber", "Select Image 1"))
-        self.Image2.setText(_translate("PNGTuber", "Select Image 2"))
-        self.File1.setText(_translate("PNGTuber", "None"))
-        self.File2.setText(_translate("PNGTuber", "None"))
-        self.inputLevelLabel.setText(_translate("PNGTuber", "Input Level: "))
-        self.menuOptions.setTitle(_translate("PNGTuber", "Options"))
-        self.actionImport.setText(_translate("PNGTuber", "Import"))
-        self.actionExport.setText(_translate("PNGTuber", "Export"))
-        self.actionSettings.setText(_translate("PNGTuber", "Settings"))
-        self.actionFullscreen.setText(_translate("PNGTuber", "Fullscreen"))
+        self.Shake.setText(_translate("TubeIt", "Shake?"))
+        self.Image1.setText(_translate("TubeIt", "Select Image 1"))
+        self.Image2.setText(_translate("TubeIt", "Select Image 2"))
+        self.File1.setText(_translate("TubeIt", "None"))
+        self.File2.setText(_translate("TubeIt", "None"))
+        self.inputLevelLabel.setText(_translate("TubeIt", "Input Level: "))
+        self.menuOptions.setTitle(_translate("TubeIt", "Options"))
+        # self.actionImport.setText(_translate("TubeIt", "Import"))
+        # self.actionExport.setText(_translate("TubeIt", "Export"))
+        self.actionSettings.setText(_translate("TubeIt", "Settings"))
+        self.actionFullscreen.setText(_translate("TubeIt", "Fullscreen"))
 
 
     ## Message code

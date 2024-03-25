@@ -34,7 +34,7 @@ class Ui_Settings(object):
 
         self.MicLevelSlider = QtWidgets.QSlider(parent=Settings)
         self.MicLevelSlider.setGeometry(QtCore.QRect(90, 130, 201, 18))
-        self.MicLevelSlider.setMaximum(32768)
+        self.MicLevelSlider.setMaximum(12000)
         self.MicLevelSlider.setProperty("value", 500)
         self.MicLevelSlider.setOrientation(QtCore.Qt.Orientation.Horizontal)
         self.MicLevelSlider.setObjectName("MicLevelSlider")
