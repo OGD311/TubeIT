@@ -13,8 +13,7 @@ Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times les
 - Shake on talk - want to add some more flair? Well simply toggle the shake box and watch as your avatar shakes around the screen when you talk (This can be customised in settings)
 - Mic Level - not sure how much your microphone is picking up? Well simply click start and watch as the audio level is displayed below.
 - Adjustable input level - is your character not changing even though your mic is being picked up? Simply lower the input level to one where the character does change
-- Stored settings - annoyed by software always losing your optimal settings? Well your settings are saved every time you adjust them!
-  > Note your avatar PNGs are not saved
+- Stored settings - annoyed by software always losing your optimal settings? Well your settings are saved every time you adjust them! We also save your avatars for quick starting!
 
 ## Usage
 - Install the latest TubeIT release
@@ -26,7 +25,7 @@ Then try TubeIT - a lightweight, easy to use PNGTuber app that uses 10 times les
 
 ## Future Features
 - Shake levels varying based on mic input levels
-- Saving avatars
 
 ## Known Issues
 - If the user has Asseto Corsa installed they will get a warning about 'TubeIT.pdb' - Clicking yes will open the TubeIT (and not open AC)
+- When starting with saved avatars, they will load as small images; this can be fixed by clicking 'Start'
