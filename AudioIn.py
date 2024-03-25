@@ -11,29 +11,47 @@ class MicrophoneInput(threading.Thread):
         self.CHANNELS = 1
         self.RATE = 44100
         self.p = pyaudio.PyAudio()
-        self.stream = self.p.open(format=self.FORMAT,
-                                  channels=self.CHANNELS,
-                                  rate=self.RATE,
-                                  input=True,
-                                  frames_per_buffer=self.CHUNK)
+        self.stream = None  # Initialize stream without opening
         self.running = False
 
+    def open_stream(self):
+        global AudioDevice
+        try:
+            self.stream = self.p.open(format=self.FORMAT,
+                                      channels=self.CHANNELS,
+                                      rate=self.RATE,
+                                      input=True,
+                                      input_device_index=AudioDevice,
+                                      frames_per_buffer=self.CHUNK)
+            self.running = True
+        except Exception as e:
+            print("Error opening audio stream:", e)
+
     def run(self):
-        self.running = True
         try:
             while self.running:
                 data = np.frombuffer(self.stream.read(self.CHUNK), dtype=np.int16)
                 self.audio_level = np.max(data)
-                #print(f"Microphone input level: {self.audio_level}")
+                print("Current audio level:", self.audio_level, "                   ", end="\r")
         except Exception as e:
-            print(f"An error occurred: {e}")
-        finally:
-            self.stream.stop_stream()
-            self.stream.close()
-            self.p.terminate()
+            print("Error in audio stream:", e)
 
     def stop(self):
         self.running = False
+        if self.stream:
+            self.stream.stop_stream()
+            self.stream.close()
 
     def curVal(self):
         return self.audio_level
+
+    
+def getAudioDevice():
+    global AudioDevice
+    print(AudioDevice)
+    return AudioDevice
+    
+def setAudioDevice(deviceID):
+    global AudioDevice
+    AudioDevice = deviceID
+
