@@ -250,7 +250,7 @@ class Ui_TubeIt(object):
 
     def load_image1(self, new=False):
         if not self.image1 or new == True:
-            self.Image1 = self.load_image()
+            self.image1 = self.load_image()
 
         if self.image1:
             self.File1.setText(self.getName(self.image1))
@@ -267,10 +267,13 @@ class Ui_TubeIt(object):
             self.saveTalking()
 
     def updateView(self):
-        if self.image2 and self.image1:
+        if self.image2:
             self.viewImage(self.image2)
         if self.image1:
             self.viewImage(self.image1)
+
+        
+        
 
     ## Fullscreen for
     def toggle_fullscreen(self):

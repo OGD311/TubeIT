@@ -43,7 +43,8 @@ class MyTubeIt(QMainWindow):
         settings_Settings = SettingsSettings()
         settings_Settings.exec()
         self.ui.updateVals()
-        self.ui.start_microphone()
+        if self.ui.startedMic == True:
+            self.ui.start_microphone()
 
 def main():
     app = QApplication(sys.argv)
